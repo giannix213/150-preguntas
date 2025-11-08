@@ -1,24 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>150 Preguntas - Juego para Conocerse</title>
+    <title>MeTú - Conéctense en 90 Minutos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Partículas de fondo -->
     <div id="particles"></div>
 
+    <!-- Modal de registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content register-modal">
+            <div class="app-logo">
+                <h1 class="app-title">Me<span class="highlight">Tú</span></h1>
+                <p class="app-tagline">Conéctense en 90 minutos</p>
+            </div>
+            <p class="register-desc">Crea tu sesión para comenzar</p>
+
+            <!-- Jugadores -->
+            <div class="players-register">
+                <div class="player-register">
+                    <label>👤 Jugador 1</label>
+                    <input type="text" id="player1Name" placeholder="Tu nombre" maxlength="20">
+                    <div class="avatar-selector">
+                        <span>Elige tu avatar:</span>
+                        <div class="avatar-options" id="avatar1Options">
+                            <div class="avatar-option active" data-avatar="👤">👤</div>
+                            <div class="avatar-option" data-avatar="👨">👨</div>
+                            <div class="avatar-option" data-avatar="👩">👩</div>
+                            <div class="avatar-option" data-avatar="🧑">🧑</div>
+                            <div class="avatar-option" data-avatar="😊">😊</div>
+                            <div class="avatar-option" data-avatar="🌟">🌟</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="player-register">
+                    <label>👤 Jugador 2</label>
+                    <input type="text" id="player2Name" placeholder="Su nombre" maxlength="20">
+                    <div class="avatar-selector">
+                        <span>Elige tu avatar:</span>
+                        <div class="avatar-options" id="avatar2Options">
+                            <div class="avatar-option active" data-avatar="👤">👤</div>
+                            <div class="avatar-option" data-avatar="👨">👨</div>
+                            <div class="avatar-option" data-avatar="👩">👩</div>
+                            <div class="avatar-option" data-avatar="🧑">🧑</div>
+                            <div class="avatar-option" data-avatar="😊">😊</div>
+                            <div class="avatar-option" data-avatar="💫">💫</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="continueRegisterBtn" class="btn btn-continue">Continuar →</button>
+        </div>
+    </div>
+
     <!-- Modal de inicio -->
-    <div id="startModal" class="modal">
+    <div id="startModal" class="modal" style="display: none;">
         <div class="modal-content start-modal">
-            <h1>💕 150 Preguntas para Conocerse 💕</h1>
-            <p>Elige el modo de juego y personaliza tu experiencia</p>
-            
+            <div class="app-logo">
+                <h1 class="app-title">Me<span class="highlight">Tú</span></h1>
+            </div>
+            <p>Elige el modo de juego</p>
+
             <!-- Modo de juego -->
             <div class="game-mode-selector">
-                <h3>Modo de Juego</h3>
                 <div class="mode-buttons">
                     <button class="mode-btn active" data-mode="colaborativo">
                         <span class="mode-icon">🤝</span>
@@ -40,64 +90,35 @@
                         <span class="mode-name">Deep Talks</span>
                         <span class="mode-desc">Conversaciones profundas</span>
                     </button>
+                    <button class="mode-btn" data-mode="sorpresa">
+                        <span class="mode-icon">🎲</span>
+                        <span class="mode-name">Sorpresa</span>
+                        <span class="mode-desc">Mezcla de todo</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Jugadores -->
-            <div class="players-setup">
-                <div class="player-setup">
-                    <label>👤 Jugador 1</label>
-                    <input type="text" id="player1Name" placeholder="Tu nombre" maxlength="20">
-                    <div class="avatar-selector">
-                        <span>Avatar:</span>
-                        <div class="avatar-options" id="avatar1Options">
-                            <div class="avatar-option active" data-avatar="👤">👤</div>
-                            <div class="avatar-option" data-avatar="👨">👨</div>
-                            <div class="avatar-option" data-avatar="👩">👩</div>
-                            <div class="avatar-option" data-avatar="🧑">🧑</div>
-                            <div class="avatar-option" data-avatar="😊">😊</div>
-                            <div class="avatar-option" data-avatar="🌟">🌟</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="player-setup">
-                    <label>👤 Jugador 2</label>
-                    <input type="text" id="player2Name" placeholder="Su nombre" maxlength="20">
-                    <div class="avatar-selector">
-                        <span>Avatar:</span>
-                        <div class="avatar-options" id="avatar2Options">
-                            <div class="avatar-option active" data-avatar="👤">👤</div>
-                            <div class="avatar-option" data-avatar="👨">👨</div>
-                            <div class="avatar-option" data-avatar="👩">👩</div>
-                            <div class="avatar-option" data-avatar="🧑">🧑</div>
-                            <div class="avatar-option" data-avatar="😊">😊</div>
-                            <div class="avatar-option" data-avatar="💫">💫</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="timer-info">
+                <p>⏱️ Duración: <strong>90 minutos obligatorios</strong></p>
+                <p class="timer-subtext">El temporizador comenzará automáticamente</p>
             </div>
 
-            <!-- Opciones adicionales -->
-            <div class="game-options">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="timerEnabled">
-                    <span>⏱️ Activar temporizador (60s por pregunta)</span>
-                </label>
-            </div>
-
-            <button id="startGameBtn" class="btn btn-start">¡Comenzar el Juego! 🚀</button>
+            <button id="startGameBtn" class="btn btn-start">¡Comenzar Sesión! 🚀</button>
         </div>
     </div>
 
     <div class="container" id="gameContainer" style="display: none;">
         <header>
-            <h1>150 Preguntas para Conocerse</h1>
-            <div class="game-mode-badge" id="gameModeBadge">🤝 Modo Colaborativo</div>
-            <div class="affinity-display" id="affinityDisplay" style="display: none;">
-                <span class="affinity-text">Afinidad: <span id="affinityScore">0</span>% 💞</span>
+            <div class="header-top">
+                <h1 class="app-title-small">Me<span class="highlight">Tú</span></h1>
+                <div class="session-timer" id="sessionTimer">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="sessionTimerDisplay">90:00</span>
+                </div>
             </div>
+            <div class="game-mode-badge" id="gameModeBadge">🤝 Modo Colaborativo</div>
             <div class="progress">
-                <span class="progress-text">Pregunta <span id="currentQuestion">0</span> de 150</span>
+                <span class="progress-text">Pregunta <span id="currentQuestion">0</span> de 90</span>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
@@ -107,18 +128,9 @@
         <main>
             <div class="game-area">
                 <div class="question-display">
-                    <div class="question-header">
-                        <div class="question-number">Pregunta #<span id="questionNumber">1</span></div>
-                        <div class="timer" id="timer" style="display: none;">
-                            <span class="timer-icon">⏱️</span>
-                            <span id="timerDisplay">60</span>s
-                        </div>
-                    </div>
+                    <div class="question-number">Pregunta #<span id="questionNumber">1</span></div>
                     <h2 id="questionText">¡Comienza el juego!</h2>
-                    <div class="question-actions">
-                        <button id="randomBtn" class="btn btn-random">🎲 Pregunta Random</button>
-                        <button id="prevBtn" class="btn btn-prev" disabled>← Anterior</button>
-                    </div>
+                    <button id="randomBtn" class="btn btn-random">🎲 Siguiente Pregunta</button>
                 </div>
 
                 <div class="players">
@@ -131,11 +143,7 @@
                             <div class="score" id="score1">0 puntos</div>
                         </div>
                         <div class="answer-status" id="status1">⏳ Esperando respuesta...</div>
-                        <textarea 
-                            id="answer1" 
-                            placeholder="Escribe tu respuesta aquí..."
-                            rows="4"
-                        ></textarea>
+                        <textarea id="answer1" placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                         <button id="submitBtn1" class="btn btn-submit" disabled>
                             <span class="btn-icon">✓</span> Enviar Respuesta
                         </button>
@@ -154,11 +162,7 @@
                             <div class="score" id="score2">0 puntos</div>
                         </div>
                         <div class="answer-status" id="status2">⏳ Esperando respuesta...</div>
-                        <textarea 
-                            id="answer2" 
-                            placeholder="Escribe tu respuesta aquí..."
-                            rows="4"
-                        ></textarea>
+                        <textarea id="answer2" placeholder="Escribe tu respuesta aquí..." rows="4"></textarea>
                         <button id="submitBtn2" class="btn btn-submit" disabled>
                             <span class="btn-icon">✓</span> Enviar Respuesta
                         </button>
@@ -182,24 +186,41 @@
                     </div>
                 </div>
 
-                <div class="custom-question">
-                    <input 
-                        type="text" 
-                        id="customQuestion" 
-                        placeholder="O escribe tu propia pregunta..."
-                    >
-                    <button id="customBtn" class="btn btn-custom">✨ Usar Esta Pregunta</button>
-                </div>
-
                 <button id="nextBtn" class="btn btn-next" disabled>
-                    Siguiente Pregunta <span class="btn-icon">→</span>
-                </button>
-
-                <button id="historyBtn" class="btn btn-history">
-                    📜 Ver Historial (<span id="historyCount">0</span>)
+                    Continuar <span class="btn-icon">→</span>
                 </button>
             </div>
         </main>
+
+        <!-- Barra de navegación inferior estilo app -->
+        <nav class="bottom-nav">
+            <button class="nav-btn" id="navHistoryBtn">
+                <span class="nav-icon">📜</span>
+                <span class="nav-label">Historial</span>
+                <span class="nav-badge" id="navHistoryCount">0</span>
+            </button>
+            <button class="nav-btn" id="navAffinityBtn">
+                <span class="nav-icon">💞</span>
+                <span class="nav-label">Afinidad</span>
+                <span class="nav-badge" id="navAffinityScore">0%</span>
+            </button>
+            <button class="nav-btn" id="navCustomBtn">
+                <span class="nav-icon">✨</span>
+                <span class="nav-label">Personalizar</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Modal de pregunta personalizada -->
+    <div id="customModal" class="modal" style="display: none;">
+        <div class="modal-content custom-modal-content">
+            <div class="modal-header">
+                <h2>✨ Pregunta Personalizada</h2>
+                <button id="closeCustomBtn" class="close-btn">✕</button>
+            </div>
+            <textarea id="customQuestion" placeholder="Escribe tu propia pregunta..." rows="4"></textarea>
+            <button id="customBtn" class="btn btn-custom-submit">Usar Esta Pregunta</button>
+        </div>
     </div>
 
     <!-- Modal de historial -->
@@ -234,4 +255,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
