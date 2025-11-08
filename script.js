@@ -107,7 +107,7 @@ const answer2 = document.getElementById('answer2');
 const submitBtn1 = document.getElementById('submitBtn1');
 const submitBtn2 = document.getElementById('submitBtn2');
 const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
+
 const randomBtn = document.getElementById('randomBtn');
 const customQuestion = document.getElementById('customQuestion');
 const customBtn = document.getElementById('customBtn');
@@ -201,7 +201,7 @@ function setupEventListeners() {
 
     // Navegación
     nextBtn.addEventListener('click', nextQuestion);
-    prevBtn.addEventListener('click', previousQuestion);
+
     randomBtn.addEventListener('click', loadRandomQuestion);
     customBtn.addEventListener('click', loadCustomQuestion);
     customQuestion.addEventListener('keypress', (e) => {
@@ -518,7 +518,7 @@ function nextQuestion() {
     loadRandomQuestion();
 }
 
-function previousQuestion() {
+
     if (history.length === 0) return;
     
     const prevItem = history[history.length - 1];
@@ -557,7 +557,7 @@ function previousQuestion() {
     }
     
     nextBtn.disabled = false;
-    prevBtn.disabled = false;
+
 }
 
 function resetForNewQuestion() {
@@ -573,7 +573,7 @@ function resetForNewQuestion() {
     submitBtn2.disabled = true;
     nextBtn.disabled = true;
     nextBtn.style.animation = 'none';
-    prevBtn.disabled = currentQuestionIndex === 0;
+
     
     status1.textContent = '⏳ Esperando respuesta...';
     status1.classList.remove('answered');
