@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+<h1>Test MeTú</h1>
+<button id="testBtn">Click me</button>
+<script>
+console.log('Script cargado');
+const btn = document.getElementById('testBtn');
+console.log('Botón:', btn);
+if(btn) {
+    btn.addEventListener('click', () => {
+        alert('Funciona!');
+        console.log('Click detectado');
+    });
+}
+</script>
+</body>
+</html>
